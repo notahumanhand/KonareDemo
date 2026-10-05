@@ -5,6 +5,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from services.gemini import test_gemini_connection
+from services.analysis import analyze_case
+from services.models import CaseAnalysisRequest
 
 
 app = FastAPI()
@@ -176,6 +178,7 @@ async def test_gemini():
         "response": test_gemini_connection()
     }
 
+
 # --------------------------------------------------
 # Document API
 # --------------------------------------------------
@@ -203,3 +206,56 @@ async def get_document_content(document_id: str):
         )
 
     return extract_document_content(document)
+
+
+# --------------------------------------------------
+# Case Analysis API
+# --------------------------------------------------
+
+@app.post("/api/cases/{case_id}/analyze")
+async def analyze_case_documents(
+    case_id: str,
+    request: CaseAnalysisRequest,
+):
+    if case_id != "MG-2026-001":
+        raise HTTPException(
+            status_code=404,
+            detail="Case not found.",
+        )
+
+    if not request.document_ids:
+        raise HTTPException(
+            status_code=400,
+            detail="At least one document must be selected.",
+        )
+
+    documents = []
+
+    for document_id in request.document_ids:
+        document = get_document(document_id.value)
+
+        if document is None:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Document {document_id.value} not found.",
+            )
+
+        documents.append(
+            extract_document_content(document)
+        )
+
+    try:
+        review = analyze_case(
+            case_id,
+            documents,
+        )
+
+    except Exception as error:
+        print(f"Case analysis failed: {error}")
+
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to analyze the demonstration case.",
+        )
+
+    return review.model_dump(mode="json")

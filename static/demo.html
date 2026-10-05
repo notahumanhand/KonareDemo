@@ -143,7 +143,7 @@
 
                         <p>
                             Identify differences and potential issues across
-                            the available documents.
+                            the selected documents.
                         </p>
                     </div>
 
@@ -185,6 +185,36 @@
                         <span id="document-list-count">Loading...</span>
                         documents available
                     </p>
+
+                </div>
+
+
+                <div class="document-selection-controls">
+
+                    <span>
+                        <strong id="selected-document-count">0</strong>
+                        selected
+                    </span>
+
+                    <div class="document-selection-actions">
+
+                        <button
+                            class="button-secondary"
+                            type="button"
+                            id="select-all-documents"
+                        >
+                            Select All
+                        </button>
+
+                        <button
+                            class="button-secondary"
+                            type="button"
+                            id="clear-selected-documents"
+                        >
+                            Clear All
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -267,13 +297,14 @@
             <div class="analysis-placeholder">
 
                 <p>
-                    Once the document workspace is complete, this step will
-                    allow the user to run the demonstration review process.
+                    Select the documents you want included in the review,
+                    then run the demonstration analysis process.
                 </p>
 
                 <ul>
                     <li>
-                        Extract relevant information from the documents.
+                        Extract relevant information from the selected
+                        documents.
                     </li>
 
                     <li>
@@ -281,25 +312,26 @@
                     </li>
 
                     <li>
-                        Compare information across documents.
+                        Compare information across the selected documents.
                     </li>
 
                     <li>
                         Identify items requiring human review.
                     </li>
+
                 </ul>
 
                 <button
                     class="button-primary"
                     type="button"
+                    id="analyze-documents"
                     disabled
                 >
-                    Analyze Documents
+                    Analyze Selected Documents
                 </button>
 
-                <p class="button-note">
-                    This functionality will be enabled in a later stage of
-                    the proof of concept.
+                <p class="button-note" id="analysis-button-note">
+                    Select at least one document to begin analysis.
                 </p>
 
             </div>

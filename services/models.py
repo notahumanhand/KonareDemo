@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict
 class FindingType(str, Enum):
     DISCREPANCY = "discrepancy"
     IDENTITY_VARIATION = "identity_variation"
-    ADDRESS_VARIATION = "address_variation"
+    ADDRESS_VARIATION = "address_variATION"
     MISSING_INFORMATION = "missing_information"
     SECURITY_EVENT = "security_event"
 
@@ -36,7 +36,6 @@ class FindingSource(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     document_id: DocumentID
-    document_name: str
     value: str
 
 
@@ -66,3 +65,9 @@ class CaseReview(BaseModel):
     key_facts: list[KeyFact]
     findings: list[Finding]
     overall_review_status: str
+
+
+class CaseAnalysisRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    document_ids: list[DocumentID]

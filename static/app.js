@@ -22,6 +22,21 @@ const selectedDocumentTitle =
 const documentViewer =
     document.querySelector("#document-viewer");
 
+const selectedDocumentCount =
+    document.querySelector("#selected-document-count");
+
+const selectAllDocumentsButton =
+    document.querySelector("#select-all-documents");
+
+const clearSelectedDocumentsButton =
+    document.querySelector("#clear-selected-documents");
+
+const analyzeDocumentsButton =
+    document.querySelector("#analyze-documents");
+
+const analysisButtonNote =
+    document.querySelector("#analysis-button-note");
+
 
 if (
     caseDemo &&
@@ -29,11 +44,19 @@ if (
     documentListCount &&
     caseDocumentCount &&
     selectedDocumentTitle &&
-    documentViewer
+    documentViewer &&
+    selectedDocumentCount &&
+    selectAllDocumentsButton &&
+    clearSelectedDocumentsButton &&
+    analyzeDocumentsButton &&
+    analysisButtonNote
 ) {
 
     const caseId =
         caseDemo.dataset.caseId;
+
+
+    let caseDocuments = [];
 
 
     if (caseId) {
@@ -62,6 +85,10 @@ if (
                 await response.json();
 
 
+            caseDocuments =
+                documents;
+
+
             documentListCount.textContent =
                 documents.length;
 
@@ -75,6 +102,8 @@ if (
                     "No documents are available for this case."
                 );
 
+                updateSelectionState();
+
                 return;
             }
 
@@ -82,6 +111,8 @@ if (
             renderDocumentList(documents);
 
             selectDocument(documents[0]);
+
+            updateSelectionState();
 
         } catch (error) {
 
@@ -99,6 +130,8 @@ if (
 
             showViewerError();
 
+            updateSelectionState();
+
         }
 
     }
@@ -111,18 +144,57 @@ if (
 
         documents.forEach((documentData) => {
 
-            const button =
-                document.createElement("button");
+            const documentItem =
+                document.createElement("div");
 
 
-            button.type = "button";
-
-            button.className =
+            documentItem.className =
                 "document-item";
 
 
-            button.dataset.documentId =
+            documentItem.dataset.documentId =
                 documentData.id;
+
+
+            const checkboxContainer =
+                document.createElement("label");
+
+
+            checkboxContainer.className =
+                "document-checkbox";
+
+
+            checkboxContainer.addEventListener(
+                "click",
+                (event) => {
+                    event.stopPropagation();
+                }
+            );
+
+
+            const checkbox =
+                document.createElement("input");
+
+
+            checkbox.type =
+                "checkbox";
+
+            checkbox.name =
+                "case-document";
+
+            checkbox.value =
+                documentData.id;
+
+            checkbox.setAttribute(
+                "aria-label",
+                `Select ${documentData.name}`
+            );
+
+
+            checkbox.addEventListener(
+                "change",
+                updateSelectionState
+            );
 
 
             const documentNumber =
@@ -165,23 +237,32 @@ if (
             );
 
 
-            button.appendChild(
+            checkboxContainer.appendChild(
+                checkbox
+            );
+
+
+            documentItem.appendChild(
+                checkboxContainer
+            );
+
+            documentItem.appendChild(
                 documentNumber
             );
 
-            button.appendChild(
+            documentItem.appendChild(
                 documentInformation
             );
 
 
-            button.addEventListener(
+            documentItem.addEventListener(
                 "click",
                 () => selectDocument(documentData)
             );
 
 
             documentList.appendChild(
-                button
+                documentItem
             );
 
         });
@@ -257,6 +338,140 @@ if (
         });
 
     }
+
+
+    function getSelectedDocumentIds() {
+
+        const selectedCheckboxes =
+            document.querySelectorAll(
+                'input[name="case-document"]:checked'
+            );
+
+
+        return Array.from(
+            selectedCheckboxes
+        ).map(
+            (checkbox) => checkbox.value
+        );
+
+    }
+
+
+    function updateSelectionState() {
+
+        const selectedIds =
+            getSelectedDocumentIds();
+
+
+        selectedDocumentCount.textContent =
+            selectedIds.length;
+
+
+        analyzeDocumentsButton.disabled =
+            selectedIds.length === 0;
+
+
+        if (selectedIds.length === 0) {
+
+            analysisButtonNote.textContent =
+                "Select at least one document to begin analysis.";
+
+        } else {
+
+            analysisButtonNote.textContent =
+                `${selectedIds.length} document${
+                    selectedIds.length === 1
+                        ? ""
+                        : "s"
+                } selected for analysis.`;
+
+        }
+
+
+        const allDocumentsSelected =
+            caseDocuments.length > 0 &&
+            selectedIds.length === caseDocuments.length;
+
+
+        selectAllDocumentsButton.disabled =
+            allDocumentsSelected;
+
+
+        clearSelectedDocumentsButton.disabled =
+            selectedIds.length === 0;
+
+    }
+
+
+    function selectAllDocuments() {
+
+        const checkboxes =
+            document.querySelectorAll(
+                'input[name="case-document"]'
+            );
+
+
+        checkboxes.forEach((checkbox) => {
+
+            checkbox.checked =
+                true;
+
+        });
+
+
+        updateSelectionState();
+
+    }
+
+
+    function clearSelectedDocuments() {
+
+        const checkboxes =
+            document.querySelectorAll(
+                'input[name="case-document"]'
+            );
+
+
+        checkboxes.forEach((checkbox) => {
+
+            checkbox.checked =
+                false;
+
+        });
+
+
+        updateSelectionState();
+
+    }
+
+
+    selectAllDocumentsButton.addEventListener(
+        "click",
+        selectAllDocuments
+    );
+
+
+    clearSelectedDocumentsButton.addEventListener(
+        "click",
+        clearSelectedDocuments
+    );
+
+
+    analyzeDocumentsButton.addEventListener(
+        "click",
+        () => {
+
+            const selectedIds =
+                getSelectedDocumentIds();
+
+
+            console.log(
+                "Documents selected for analysis:",
+                selectedIds
+            );
+
+        }
+    );
 
 
     function showViewerLoading(documentName) {
