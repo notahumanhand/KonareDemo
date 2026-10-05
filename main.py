@@ -4,6 +4,7 @@ from docx import Document
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from services.gemini import test_gemini_connection
 
 
 app = FastAPI()
@@ -156,6 +157,12 @@ def extract_document_content(document):
 async def read_index():
     return FileResponse(STATIC_DIR / "index.html")
 
+
+@app.get("/api/test/gemini")
+async def test_gemini():
+    return {
+        "response": test_gemini_connection()
+    }
 
 # --------------------------------------------------
 # Document API
