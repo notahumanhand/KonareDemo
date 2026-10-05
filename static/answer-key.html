@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CaseFlow — Demo Answer Key</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="/" class="site-title">CaseFlow</a>
+
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a href="/">Case</a>
+                <a href="/static/answer-key.html" aria-current="page">Answer Key</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <section class="page-header">
+            <p class="eyebrow">Developer / Tester Reference</p>
+            <h1>Demo Case Answer Key</h1>
+            <p class="page-introduction">
+                Expected findings for synthetic demonstration case
+                <strong>MG-2026-001</strong>.
+            </p>
+        </section>
+
+        <div class="demo-warning">
+            <strong>SYNTHETIC DEMONSTRATION DOCUMENT</strong>
+            <span>For software demonstration and testing only. Not a real person or legal matter.</span>
+        </div>
+
+        <section class="content-section">
+            <div class="section-heading">
+                <h2>Case Information</h2>
+            </div>
+
+            <div class="fact-grid">
+                <div class="fact">
+                    <dt>Case ID</dt>
+                    <dd>MG-2026-001</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Canonical Client Name</dt>
+                    <dd>Maria Elena Garcia Lopez</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Date of Birth</dt>
+                    <dd>March 14, 1998</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Canonical Entry Date</dt>
+                    <dd>August 21, 2024</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Canonical Marriage Date</dt>
+                    <dd>June 7, 2025</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Current Address</dt>
+                    <dd>742 Evergreen Terrace, Frederick, MD 21701</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Prior Address</dt>
+                    <dd>1840 Harbor View Road, Baltimore, MD 21224</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Spouse</dt>
+                    <dd>John Michael Miller</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Passport Number</dt>
+                    <dd>MX-DMO-482913</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Admission Number</dt>
+                    <dd>947-381-205-6</dd>
+                </div>
+
+                <div class="fact">
+                    <dt>Class of Admission</dt>
+                    <dd>B2</dd>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-heading">
+                <h2>Expected Review Findings</h2>
+                <p>
+                    These findings represent the expected output of the document
+                    extraction and comparison workflow.
+                </p>
+            </div>
+
+            <div class="review-list">
+
+                <article class="review-item">
+                    <div class="review-item-header">
+                        <div>
+                            <span class="status-label status-review">Needs Review</span>
+                            <h3>Entry-Date Mismatch</h3>
+                        </div>
+                    </div>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-value">
+                            <span class="comparison-label">Client Intake</span>
+                            <strong>August 12, 2024</strong>
+                        </div>
+
+                        <div class="comparison-value">
+                            <span class="comparison-label">Arrival Record</span>
+                            <strong>August 21, 2024</strong>
+                        </div>
+
+                        <div class="comparison-value">
+                            <span class="comparison-label">Case Note</span>
+                            <strong>Client was uncertain about the date.</strong>
+                        </div>
+                    </div>
+
+                    <p class="review-description">
+                        The arrival record provides the canonical date for the
+                        demonstration. The conflicting intake response and case
+                        note should result in a human-review item.
+                    </p>
+                </article>
+
+                <article class="review-item">
+                    <div class="review-item-header">
+                        <div>
+                            <span class="status-label status-review">Needs Review</span>
+                            <h3>Marriage-Date Mismatch</h3>
+                        </div>
+                    </div>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-value">
+                            <span class="comparison-label">Client Intake</span>
+                            <strong>June 17, 2025</strong>
+                        </div>
+
+                        <div class="comparison-value">
+                            <span class="comparison-label">Marriage Record</span>
+                            <strong>June 7, 2025</strong>
+                        </div>
+                    </div>
+
+                    <p class="review-description">
+                        The marriage record provides the canonical date for the
+                        demonstration. The conflicting intake response should
+                        be surfaced for staff review.
+                    </p>
+                </article>
+
+                <article class="review-item">
+                    <div class="review-item-header">
+                        <div>
+                            <span class="status-label status-review">Identity Review</span>
+                            <h3>Name Variation</h3>
+                        </div>
+                    </div>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-value">
+                            <span class="comparison-label">Observed Name</span>
+                            <strong>Maria Garcia</strong>
+                        </div>
+
+                        <div class="comparison-value">
+                            <span class="comparison-label">Observed Name</span>
+                            <strong>Maria Elena Garcia</strong>
+                        </div>
+
+                        <div class="comparison-value">
+                            <span class="comparison-label">Canonical Name</span>
+                            <strong>Maria Elena Garcia Lopez</strong>
+                        </div>
+                    </div>
+
+                    <p class="review-description">
+                        Do not automatically treat the variation as an error.
+                        The system should identify the variation and route it
+                        for identity/name review.
+                    </p>
+                </article>
+
+                <article class="review-item">
+                    <div class="review-item-header">
+                        <div>
+                            <span class="status-label status-context">Contextual Review</span>
+                            <h3>Address Variation</h3>
+                        </div>
+                    </div>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-value">
+                            <span class="comparison-label">2025 Tax Summary</span>
+                            <strong>1840 Harbor View Road<br>Baltimore, MD 21224</strong>
+                        </div>
+
+                        <div class="comparison-value">
+                            <span class="comparison-label">Later Lease / Intake</span>
+                            <strong>742 Evergreen Terrace<br>Frederick, MD 21701</strong>
+                        </div>
+                    </div>
+
+                    <p class="review-description">
+                        The difference should not automatically be classified as
+                        contradictory. The timeline indicates that the Baltimore
+                        address may be historical.
+                    </p>
+                </article>
+
+                <article class="review-item">
+                    <div class="review-item-header">
+                        <div>
+                            <span class="status-label status-review">Staff Review</span>
+                            <h3>Financial Evidence</h3>
+                        </div>
+                    </div>
+
+                    <p class="review-description">
+                        Financial evidence is intentionally incomplete for the
+                        production legal checklist. The proof of concept should
+                        report this as potentially missing information requiring
+                        staff review.
+                    </p>
+
+                    <div class="callout">
+                        <strong>Expected behavior:</strong>
+                        Do not make a legal eligibility determination.
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-heading">
+                <h2>Expected System Behavior</h2>
+            </div>
+
+            <div class="behavior-list">
+                <div class="behavior-item">
+                    <strong>Extract</strong>
+                    <span>Identify relevant facts from each source document.</span>
+                </div>
+
+                <div class="behavior-item">
+                    <strong>Compare</strong>
+                    <span>Identify conflicting or varying representations of the same fact.</span>
+                </div>
+
+                <div class="behavior-item">
+                    <strong>Preserve provenance</strong>
+                    <span>Maintain the source document associated with each extracted fact.</span>
+                </div>
+
+                <div class="behavior-item">
+                    <strong>Route uncertainty</strong>
+                    <span>Send ambiguous findings to a human reviewer rather than resolving them automatically.</span>
+                </div>
+
+                <div class="behavior-item">
+                    <strong>Separate fact from interpretation</strong>
+                    <span>Distinguish observed document information from software-generated interpretations.</span>
+                </div>
+
+                <div class="behavior-item">
+                    <strong>Do not provide legal advice</strong>
+                    <span>Do not determine eligibility or assert filing requirements without an authoritative rules source.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section safety-section">
+            <div class="section-heading">
+                <h2>Safety &amp; Design Expectations</h2>
+            </div>
+
+            <p>
+                The software should extract and compare facts, preserve source
+                provenance, and route uncertainty to a human reviewer.
+            </p>
+
+            <p>
+                It should not provide legal advice, determine eligibility, or
+                assert filing requirements without a separately maintained
+                authoritative rules source.
+            </p>
+        </section>
+
+        <footer class="page-footer">
+            <p>
+                Demo Case MG-2026-001 · Document 11 · Synthetic data only
+            </p>
+
+            <a href="/">Return to CaseFlow</a>
+        </footer>
+    </main>
+</body>
+</html>
