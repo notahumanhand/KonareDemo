@@ -459,19 +459,122 @@ if (
 
     analyzeDocumentsButton.addEventListener(
         "click",
-        () => {
+        analyzeSelectedDocuments
+    );
 
-            const selectedIds =
-                getSelectedDocumentIds();
+
+    async function analyzeSelectedDocuments() {
+
+        const selectedIds =
+            getSelectedDocumentIds();
+
+
+        if (selectedIds.length === 0) {
+
+            analysisButtonNote.textContent =
+                "Select at least one document to begin analysis.";
+
+            return;
+
+        }
+
+
+        analyzeDocumentsButton.disabled =
+            true;
+
+
+        analyzeDocumentsButton.textContent =
+            "Analyzing...";
+
+
+        analysisButtonNote.textContent =
+            `Analyzing ${selectedIds.length} selected document${
+                selectedIds.length === 1
+                    ? ""
+                    : "s"
+            }...`;
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `/api/cases/${encodeURIComponent(caseId)}/analyze`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            document_ids:
+                                selectedIds
+                        })
+                    }
+                );
+
+
+            let responseData = null;
+
+
+            try {
+
+                responseData =
+                    await response.json();
+
+            } catch (error) {
+
+                throw new Error(
+                    "The analysis service returned an invalid response."
+                );
+
+            }
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    responseData.detail ||
+                    "Unable to analyze the selected documents."
+                );
+
+            }
 
 
             console.log(
-                "Documents selected for analysis:",
-                selectedIds
+                "Case analysis completed:",
+                responseData
             );
 
+
+            analysisButtonNote.textContent =
+                "Analysis completed successfully. Review the response in the browser console.";
+
+        } catch (error) {
+
+            console.error(
+                "Case analysis failed:",
+                error
+            );
+
+
+            analysisButtonNote.textContent =
+                error.message ||
+                "Unable to analyze the selected documents.";
+
+        } finally {
+
+            analyzeDocumentsButton.textContent =
+                "Analyze Selected Documents";
+
+
+            updateSelectionState();
+
         }
-    );
+
+    }
 
 
     function showViewerLoading(documentName) {

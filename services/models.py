@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict
 class FindingType(str, Enum):
     DISCREPANCY = "discrepancy"
     IDENTITY_VARIATION = "identity_variation"
-    ADDRESS_VARIATION = "address_variATION"
+    ADDRESS_VARIATION = "address_variation"
     MISSING_INFORMATION = "missing_information"
     SECURITY_EVENT = "security_event"
 
