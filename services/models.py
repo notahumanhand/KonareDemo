@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel
 
 
 class FindingType(str, Enum):
@@ -33,14 +33,12 @@ class DocumentID(str, Enum):
 
 
 class FindingSource(BaseModel):
-    model_config = ConfigDict(extra="forbid")
 
     document_id: DocumentID
     value: str
 
 
 class Finding(BaseModel):
-    model_config = ConfigDict(extra="forbid")
 
     type: FindingType
     severity: FindingSeverity
@@ -51,7 +49,6 @@ class Finding(BaseModel):
 
 
 class KeyFact(BaseModel):
-    model_config = ConfigDict(extra="forbid")
 
     field: str
     value: str
@@ -59,7 +56,6 @@ class KeyFact(BaseModel):
 
 
 class CaseReview(BaseModel):
-    model_config = ConfigDict(extra="forbid")
 
     case_summary: str
     key_facts: list[KeyFact]
@@ -68,6 +64,5 @@ class CaseReview(BaseModel):
 
 
 class CaseAnalysisRequest(BaseModel):
-    model_config = ConfigDict(extra="forbid")
 
     document_ids: list[DocumentID]
