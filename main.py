@@ -91,6 +91,18 @@ DOCUMENTS = [
         "category": "Case Note",
         "filename": "10_Synthetic_Internal_Case_Note.docx",
     },
+    {
+        "id": "11",
+        "name": "Prompt Injection Test Document",
+        "category": "Security Test",
+        "filename": "11_Prompt_Injection_Test_Document.docx",
+    },
+    {
+        "id": "12",
+        "name": "Subtle Prompt Injection Test Document",
+        "category": "Security Test",
+        "filename": "12_Client_Review_Statement.docx",
+    },
 ]
 
 
