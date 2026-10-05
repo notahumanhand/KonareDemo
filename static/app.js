@@ -37,6 +37,30 @@ const analyzeDocumentsButton =
 const analysisButtonNote =
     document.querySelector("#analysis-button-note");
 
+const analysisStatus =
+    document.querySelector("#analysis-status");
+
+const analysisResults =
+    document.querySelector("#analysis-results");
+
+const analysisOverallStatus =
+    document.querySelector("#analysis-overall-status");
+
+const analysisSummary =
+    document.querySelector("#analysis-summary");
+
+const keyFactsCount =
+    document.querySelector("#key-facts-count");
+
+const keyFactsList =
+    document.querySelector("#key-facts-list");
+
+const findingsCount =
+    document.querySelector("#findings-count");
+
+const findingsList =
+    document.querySelector("#findings-list");
+
 
 if (
     caseDemo &&
@@ -49,7 +73,15 @@ if (
     selectAllDocumentsButton &&
     clearSelectedDocumentsButton &&
     analyzeDocumentsButton &&
-    analysisButtonNote
+    analysisButtonNote &&
+    analysisStatus &&
+    analysisResults &&
+    analysisOverallStatus &&
+    analysisSummary &&
+    keyFactsCount &&
+    keyFactsList &&
+    findingsCount &&
+    findingsList
 ) {
 
     const caseId =
@@ -479,6 +511,42 @@ if (
         }
 
 
+        analysisResults.hidden =
+            true;
+
+
+        analysisStatus.hidden =
+            false;
+
+        analysisStatus.className =
+            "analysis-status analysis-status-processing";
+
+        analysisStatus.replaceChildren();
+
+
+        const processingHeading =
+            document.createElement("strong");
+
+        processingHeading.textContent =
+            "Case analysis in progress";
+
+
+        const processingMessage =
+            document.createElement("span");
+
+        processingMessage.textContent =
+            "The selected documents are being reviewed.";
+
+
+        analysisStatus.appendChild(
+            processingHeading
+        );
+
+        analysisStatus.appendChild(
+            processingMessage
+        );
+
+
         analyzeDocumentsButton.disabled =
             true;
 
@@ -543,14 +611,46 @@ if (
             }
 
 
-            console.log(
-                "Case analysis completed:",
+            renderAnalysisResults(
                 responseData
             );
 
 
+            analysisStatus.className =
+                "analysis-status analysis-status-complete";
+
+            analysisStatus.replaceChildren();
+
+
+            const completedHeading =
+                document.createElement("strong");
+
+            completedHeading.textContent =
+                "Case analysis completed";
+
+
+            const completedMessage =
+                document.createElement("span");
+
+            completedMessage.textContent =
+                "The selected documents have been processed successfully.";
+
+
+            analysisStatus.appendChild(
+                completedHeading
+            );
+
+            analysisStatus.appendChild(
+                completedMessage
+            );
+
+
+            analysisResults.hidden =
+                false;
+
+
             analysisButtonNote.textContent =
-                "Analysis completed successfully. Review the response in the browser console.";
+                "Analysis completed successfully.";
 
         } catch (error) {
 
@@ -560,9 +660,42 @@ if (
             );
 
 
-            analysisButtonNote.textContent =
+            analysisStatus.className =
+                "analysis-status analysis-status-error";
+
+            analysisStatus.replaceChildren();
+
+
+            const errorHeading =
+                document.createElement("strong");
+
+            errorHeading.textContent =
+                "Case analysis could not be completed";
+
+
+            const errorMessage =
+                document.createElement("span");
+
+            errorMessage.textContent =
                 error.message ||
                 "Unable to analyze the selected documents.";
+
+
+            analysisStatus.appendChild(
+                errorHeading
+            );
+
+            analysisStatus.appendChild(
+                errorMessage
+            );
+
+
+            analysisResults.hidden =
+                true;
+
+
+            analysisButtonNote.textContent =
+                "The analysis request could not be completed.";
 
         } finally {
 
@@ -573,6 +706,438 @@ if (
             updateSelectionState();
 
         }
+
+    }
+
+
+    function renderAnalysisResults(review) {
+
+        analysisOverallStatus.textContent =
+            review.overall_review_status ||
+            "Review status unavailable";
+
+
+        analysisOverallStatus.className =
+            "status status-analysis";
+
+
+        analysisSummary.textContent =
+            review.case_summary ||
+            "No case summary was returned.";
+
+
+        renderKeyFacts(
+            review.key_facts
+        );
+
+
+        renderFindings(
+            review.findings
+        );
+
+    }
+
+
+    function renderKeyFacts(keyFacts) {
+
+        keyFactsList.replaceChildren();
+
+
+        const facts =
+            Array.isArray(keyFacts)
+                ? keyFacts
+                : [];
+
+
+        keyFactsCount.textContent =
+            `${facts.length} ${
+                facts.length === 1
+                    ? "fact"
+                    : "facts"
+            }`;
+
+
+        if (facts.length === 0) {
+
+            const emptyMessage =
+                document.createElement("p");
+
+            emptyMessage.className =
+                "analysis-empty-message";
+
+            emptyMessage.textContent =
+                "No key facts were returned for this review.";
+
+
+            keyFactsList.appendChild(
+                emptyMessage
+            );
+
+            return;
+
+        }
+
+
+        facts.forEach((fact) => {
+
+            const factRow =
+                document.createElement("div");
+
+            factRow.className =
+                "key-fact-row";
+
+
+            const factInformation =
+                document.createElement("div");
+
+            factInformation.className =
+                "key-fact-information";
+
+
+            const factField =
+                document.createElement("strong");
+
+            factField.textContent =
+                fact.field ||
+                "Unspecified field";
+
+
+            const factValue =
+                document.createElement("span");
+
+            factValue.textContent =
+                fact.value ||
+                "No value returned";
+
+
+            factInformation.appendChild(
+                factField
+            );
+
+            factInformation.appendChild(
+                factValue
+            );
+
+
+            const sourceList =
+                createSourceList(
+                    fact.sources
+                );
+
+
+            factRow.appendChild(
+                factInformation
+            );
+
+            factRow.appendChild(
+                sourceList
+            );
+
+
+            keyFactsList.appendChild(
+                factRow
+            );
+
+        });
+
+    }
+
+
+    function renderFindings(findings) {
+
+        findingsList.replaceChildren();
+
+
+        const findingItems =
+            Array.isArray(findings)
+                ? findings
+                : [];
+
+
+        findingsCount.textContent =
+            `${findingItems.length} ${
+                findingItems.length === 1
+                    ? "finding"
+                    : "findings"
+            }`;
+
+
+        if (findingItems.length === 0) {
+
+            const emptyMessage =
+                document.createElement("p");
+
+            emptyMessage.className =
+                "analysis-empty-message";
+
+            emptyMessage.textContent =
+                "No findings were returned for this review.";
+
+
+            findingsList.appendChild(
+                emptyMessage
+            );
+
+            return;
+
+        }
+
+
+        findingItems.forEach((finding) => {
+
+            const findingCard =
+                document.createElement("article");
+
+            findingCard.className =
+                "finding-card";
+
+
+            const findingHeader =
+                document.createElement("div");
+
+            findingHeader.className =
+                "finding-header";
+
+
+            const findingHeading =
+                document.createElement("div");
+
+            findingHeading.className =
+                "finding-heading";
+
+
+            const severity =
+                document.createElement("span");
+
+            severity.className =
+                `finding-severity finding-severity-${
+                    finding.severity ||
+                    "medium"
+                }`;
+
+            severity.textContent =
+                formatFindingSeverity(
+                    finding.severity
+                );
+
+
+            const title =
+                document.createElement("h5");
+
+            title.textContent =
+                finding.title ||
+                "Untitled finding";
+
+
+            findingHeading.appendChild(
+                severity
+            );
+
+            findingHeading.appendChild(
+                title
+            );
+
+
+            const findingType =
+                document.createElement("span");
+
+            findingType.className =
+                "finding-type";
+
+            findingType.textContent =
+                formatFindingType(
+                    finding.type
+                );
+
+
+            findingHeader.appendChild(
+                findingHeading
+            );
+
+            findingHeader.appendChild(
+                findingType
+            );
+
+
+            const summary =
+                document.createElement("p");
+
+            summary.className =
+                "finding-summary";
+
+            summary.textContent =
+                finding.summary ||
+                "No finding summary was returned.";
+
+
+            const sourceHeading =
+                document.createElement("p");
+
+            sourceHeading.className =
+                "finding-subheading";
+
+            sourceHeading.textContent =
+                "Source documents";
+
+
+            const sourceList =
+                createSourceList(
+                    finding.sources
+                );
+
+
+            const recommendationHeading =
+                document.createElement("p");
+
+            recommendationHeading.className =
+                "finding-subheading";
+
+            recommendationHeading.textContent =
+                "Human review recommendation";
+
+
+            const recommendation =
+                document.createElement("p");
+
+            recommendation.className =
+                "finding-recommendation";
+
+            recommendation.textContent =
+                finding.review_recommendation ||
+                "No review recommendation was returned.";
+
+
+            findingCard.appendChild(
+                findingHeader
+            );
+
+            findingCard.appendChild(
+                summary
+            );
+
+            findingCard.appendChild(
+                sourceHeading
+            );
+
+            findingCard.appendChild(
+                sourceList
+            );
+
+            findingCard.appendChild(
+                recommendationHeading
+            );
+
+            findingCard.appendChild(
+                recommendation
+            );
+
+
+            findingsList.appendChild(
+                findingCard
+            );
+
+        });
+
+    }
+
+
+    function createSourceList(sources) {
+
+        const sourceContainer =
+            document.createElement("div");
+
+        sourceContainer.className =
+            "source-list";
+
+
+        const sourceItems =
+            Array.isArray(sources)
+                ? sources
+                : [];
+
+
+        if (sourceItems.length === 0) {
+
+            const noSource =
+                document.createElement("span");
+
+            noSource.className =
+                "source-empty";
+
+            noSource.textContent =
+                "No source documents returned.";
+
+
+            sourceContainer.appendChild(
+                noSource
+            );
+
+            return sourceContainer;
+
+        }
+
+
+        sourceItems.forEach((source) => {
+
+            const sourceItem =
+                document.createElement("span");
+
+            sourceItem.className =
+                "source-item";
+
+
+            sourceItem.textContent =
+                source.document_id ||
+                "Unknown";
+
+
+            sourceItem.title =
+                source.value ||
+                "";
+
+
+            sourceContainer.appendChild(
+                sourceItem
+            );
+
+        });
+
+
+        return sourceContainer;
+
+    }
+
+
+    function formatFindingSeverity(severity) {
+
+        if (!severity) {
+            return "Unknown";
+        }
+
+
+        return severity
+            .charAt(0)
+            .toUpperCase() +
+            severity.slice(1);
+
+    }
+
+
+    function formatFindingType(type) {
+
+        if (!type) {
+            return "Unspecified";
+        }
+
+
+        return type
+            .split("_")
+            .map(
+                (word) =>
+                    word.charAt(0).toUpperCase() +
+                    word.slice(1)
+            )
+            .join(" ");
 
     }
 
