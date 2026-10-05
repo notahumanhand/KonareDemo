@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CaseFlow Demo</title>
+
     <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/app.js" defer></script>
 </head>
 <body>
 
@@ -28,7 +31,10 @@
     </header>
 
 
-    <main class="page-container">
+    <main
+        class="page-container"
+        data-case-id="MG-2026-001"
+    >
 
         <div class="demo-notice">
             <strong>DEMO ENVIRONMENT</strong>
@@ -74,7 +80,7 @@
 
                 <div class="meta-item">
                     <span class="meta-label">Documents</span>
-                    <span>6 available</span>
+                    <span id="case-document-count">Loading...</span>
                 </div>
 
             </div>
@@ -176,91 +182,21 @@
                     <h2>Case Folder</h2>
 
                     <p>
-                        6 documents available
+                        <span id="document-list-count">Loading...</span>
+                        documents available
                     </p>
 
                 </div>
 
 
-                <div class="document-list">
-
-                    <button
-                        class="document-item selected"
-                        type="button"
-                    >
-                        <span class="document-number">01</span>
-
-                        <span class="document-information">
-                            <strong>Client Intake Form</strong>
-                            <small>Intake</small>
-                        </span>
-                    </button>
-
-
-                    <button
-                        class="document-item"
-                        type="button"
-                    >
-                        <span class="document-number">02</span>
-
-                        <span class="document-information">
-                            <strong>Passport</strong>
-                            <small>Identity</small>
-                        </span>
-                    </button>
-
-
-                    <button
-                        class="document-item"
-                        type="button"
-                    >
-                        <span class="document-number">03</span>
-
-                        <span class="document-information">
-                            <strong>Arrival Record</strong>
-                            <small>Immigration Record</small>
-                        </span>
-                    </button>
-
-
-                    <button
-                        class="document-item"
-                        type="button"
-                    >
-                        <span class="document-number">04</span>
-
-                        <span class="document-information">
-                            <strong>Marriage Record</strong>
-                            <small>Civil Record</small>
-                        </span>
-                    </button>
-
-
-                    <button
-                        class="document-item"
-                        type="button"
-                    >
-                        <span class="document-number">05</span>
-
-                        <span class="document-information">
-                            <strong>Tax Summary</strong>
-                            <small>Financial Record</small>
-                        </span>
-                    </button>
-
-
-                    <button
-                        class="document-item"
-                        type="button"
-                    >
-                        <span class="document-number">06</span>
-
-                        <span class="document-information">
-                            <strong>Residential Lease</strong>
-                            <small>Address Record</small>
-                        </span>
-                    </button>
-
+                <div
+                    class="document-list"
+                    id="document-list"
+                    aria-live="polite"
+                >
+                    <p>
+                        Loading demonstration documents...
+                    </p>
                 </div>
 
             </div>
@@ -273,7 +209,9 @@
                     <div>
                         <p class="section-label">SELECTED DOCUMENT</p>
 
-                        <h2>Client Intake Form</h2>
+                        <h2 id="selected-document-title">
+                            Loading...
+                        </h2>
                     </div>
 
                     <span class="status">
@@ -285,24 +223,22 @@
 
                 <div class="document-viewer-placeholder">
 
-                    <div class="document-placeholder-content">
+                    <div
+                        class="document-placeholder-content"
+                        id="document-viewer"
+                    >
 
                         <p class="section-label">
                             DOCUMENT PREVIEW
                         </p>
 
                         <h3>
-                            Client Intake Form
+                            Loading document...
                         </h3>
 
                         <p>
-                            The interactive document viewer will be implemented
-                            in the next stage of the demonstration.
-                        </p>
-
-                        <p>
-                            Documents in this POC are represented as synthetic
-                            application data rather than downloadable files.
+                            The selected demonstration document will appear
+                            here.
                         </p>
 
                     </div>
