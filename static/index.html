@@ -3,11 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CaseFlow</title>
+
+    <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-    <h1>CaseFlow</h1>
-    <p>Immigration workflow automation demo.</p>
-    <p>Demo environment — synthetic data only.</p>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="site-title">CaseFlow</a>
+
+            <nav class="main-navigation" aria-label="Main navigation">
+                <a href="#" class="active">Cases</a>
+                <a href="#">Documents</a>
+                <a href="#">Tasks</a>
+                <a href="#">Activity</a>
+            </nav>
+
+            <div class="environment-label">
+                Demo Environment
+            </div>
+        </div>
+    </header>
+
+
+    <main class="page-container">
+
+        <div class="demo-notice">
+            <strong>DEMO ENVIRONMENT</strong>
+            This application uses synthetic data for demonstration purposes.
+            Not legal advice.
+        </div>
+
+
+        <section class="page-introduction">
+            <p class="eyebrow">CASE MANAGEMENT</p>
+
+            <h1>Case Overview</h1>
+
+            <p class="introduction-text">
+                Review case information, document status, workflow tasks,
+                and activity for the current matter.
+            </p>
+        </section>
+
+
+        <section class="case-header">
+
+            <div>
+                <p class="section-label">CLIENT</p>
+                <h2>Maria Rodriguez</h2>
+                <p class="matter-type">Adjustment of Status</p>
+            </div>
+
+            <div class="case-meta">
+
+                <div class="meta-item">
+                    <span class="meta-label">STATUS</span>
+                    <span class="status status-active">Active</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">TARGET DATE</span>
+                    <span>October 28, 2026</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">ASSIGNED TO</span>
+                    <span>J. Smith</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="content-grid">
+
+            <section class="content-section documents-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">CASE WORKFLOW</p>
+                        <h2>Documents</h2>
+                    </div>
+
+                    <span class="section-count">5 documents</span>
+                </div>
+
+                <div class="document-list">
+
+                    <div class="document-row">
+                        <div>
+                            <strong>Passport</strong>
+                            <span>Identity document</span>
+                        </div>
+
+                        <span class="status status-received">Received</span>
+                    </div>
+
+                    <div class="document-row">
+                        <div>
+                            <strong>Birth Certificate</strong>
+                            <span>Civil document</span>
+                        </div>
+
+                        <span class="status status-received">Received</span>
+                    </div>
+
+                    <div class="document-row">
+                        <div>
+                            <strong>Marriage Certificate</strong>
+                            <span>Civil document</span>
+                        </div>
+
+                        <span class="status status-received">Received</span>
+                    </div>
+
+                    <div class="document-row document-missing">
+                        <div>
+                            <strong>I-94</strong>
+                            <span>Immigration record</span>
+                        </div>
+
+                        <span class="status status-missing">Missing</span>
+                    </div>
+
+                    <div class="document-row document-missing">
+                        <div>
+                            <strong>Prior Immigration Records</strong>
+                            <span>Case history</span>
+                        </div>
+
+                        <span class="status status-missing">Missing</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="content-section analysis-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">AUTOMATION</p>
+                        <h2>Case Analysis</h2>
+                    </div>
+                </div>
+
+                <div class="analysis-placeholder">
+
+                    <p class="placeholder-label">AI-ASSISTED ANALYSIS</p>
+
+                    <p>
+                        Automated case analysis will appear here in a
+                        future iteration of CaseFlow.
+                    </p>
+
+                    <p class="review-note">
+                        AI-generated information will require human review.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="content-section tasks-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">WORKFLOW</p>
+                        <h2>Tasks &amp; Deadlines</h2>
+                    </div>
+
+                    <span class="section-count">3 tasks</span>
+                </div>
+
+                <div class="task-list">
+
+                    <div class="task-row">
+                        <div class="task-indicator"></div>
+
+                        <div class="task-content">
+                            <strong>Request missing I-94</strong>
+                            <span>Document request</span>
+                        </div>
+
+                        <span class="task-status">Open</span>
+                    </div>
+
+                    <div class="task-row">
+                        <div class="task-indicator"></div>
+
+                        <div class="task-content">
+                            <strong>Request prior immigration records</strong>
+                            <span>Document request</span>
+                        </div>
+
+                        <span class="task-status">Open</span>
+                    </div>
+
+                    <div class="task-row">
+                        <div class="task-indicator"></div>
+
+                        <div class="task-content">
+                            <strong>Verify biographical information</strong>
+                            <span>Case review</span>
+                        </div>
+
+                        <span class="task-status">Open</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="content-section activity-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">HISTORY</p>
+                        <h2>Activity</h2>
+                    </div>
+                </div>
+
+                <div class="activity-list">
+
+                    <div class="activity-row">
+                        <time>Today · 09:42 AM</time>
+                        <p>Case reviewed</p>
+                    </div>
+
+                    <div class="activity-row">
+                        <time>Today · 09:31 AM</time>
+                        <p>Marriage Certificate marked received</p>
+                    </div>
+
+                    <div class="activity-row">
+                        <time>Yesterday · 04:15 PM</time>
+                        <p>Case created</p>
+                    </div>
+
+                    <div class="activity-row">
+                        <time>Yesterday · 04:15 PM</time>
+                        <p>Initial document checklist generated</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>CaseFlow</span>
+            <span>Internal workflow demonstration</span>
+        </div>
+    </footer>
+
 </body>
 </html>
