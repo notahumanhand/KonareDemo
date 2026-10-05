@@ -4,7 +4,8 @@
    -------------------------------------------------- */
 
 
-const caseDemo = document.querySelector(".page-container");
+const caseDemo =
+    document.querySelector(".page-container");
 
 const documentList =
     document.querySelector("#document-list");
@@ -31,7 +32,8 @@ if (
     documentViewer
 ) {
 
-    const caseId = caseDemo.dataset.caseId;
+    const caseId =
+        caseDemo.dataset.caseId;
 
 
     if (caseId) {
@@ -43,9 +45,10 @@ if (
 
         try {
 
-            const response = await fetch(
-                `/api/cases/${encodeURIComponent(caseId)}/documents`
-            );
+            const response =
+                await fetch(
+                    `/api/cases/${encodeURIComponent(caseId)}/documents`
+                );
 
 
             if (!response.ok) {
@@ -55,14 +58,19 @@ if (
             }
 
 
-            const documents = await response.json();
+            const documents =
+                await response.json();
 
 
-            documentListCount.textContent = documents.length;
-            caseDocumentCount.textContent = documents.length;
+            documentListCount.textContent =
+                documents.length;
+
+            caseDocumentCount.textContent =
+                documents.length;
 
 
             if (documents.length === 0) {
+
                 showDocumentListMessage(
                     "No documents are available for this case."
                 );
@@ -79,8 +87,11 @@ if (
 
             console.error(error);
 
-            documentListCount.textContent = "0";
-            caseDocumentCount.textContent = "0";
+            documentListCount.textContent =
+                "0";
+
+            caseDocumentCount.textContent =
+                "0";
 
             showDocumentListMessage(
                 "Unable to load the demonstration documents."
@@ -98,18 +109,20 @@ if (
         documentList.replaceChildren();
 
 
-        documents.forEach((document) => {
+        documents.forEach((documentData) => {
 
             const button =
                 document.createElement("button");
 
 
             button.type = "button";
-            button.className = "document-item";
+
+            button.className =
+                "document-item";
 
 
             button.dataset.documentId =
-                document.id;
+                documentData.id;
 
 
             const documentNumber =
@@ -119,7 +132,7 @@ if (
                 "document-number";
 
             documentNumber.textContent =
-                document.id;
+                documentData.id;
 
 
             const documentInformation =
@@ -133,14 +146,14 @@ if (
                 document.createElement("strong");
 
             documentName.textContent =
-                document.name;
+                documentData.name;
 
 
             const documentCategory =
                 document.createElement("small");
 
             documentCategory.textContent =
-                document.category;
+                documentData.category;
 
 
             documentInformation.appendChild(
@@ -163,33 +176,41 @@ if (
 
             button.addEventListener(
                 "click",
-                () => selectDocument(document)
+                () => selectDocument(documentData)
             );
 
 
-            documentList.appendChild(button);
+            documentList.appendChild(
+                button
+            );
 
         });
 
     }
 
 
-    async function selectDocument(document) {
+    async function selectDocument(documentData) {
 
-        setSelectedDocument(document.id);
+        setSelectedDocument(
+            documentData.id
+        );
+
 
         selectedDocumentTitle.textContent =
-            document.name;
+            documentData.name;
 
 
-        showViewerLoading(document.name);
+        showViewerLoading(
+            documentData.name
+        );
 
 
         try {
 
-            const response = await fetch(
-                `/api/cases/${encodeURIComponent(caseId)}/documents/${encodeURIComponent(document.id)}`
-            );
+            const response =
+                await fetch(
+                    `/api/cases/${encodeURIComponent(caseId)}/documents/${encodeURIComponent(documentData.id)}`
+                );
 
 
             if (!response.ok) {
@@ -199,11 +220,13 @@ if (
             }
 
 
-            const documentData =
+            const selectedDocument =
                 await response.json();
 
 
-            renderDocument(documentData);
+            renderDocument(
+                selectedDocument
+            );
 
         } catch (error) {
 
@@ -219,7 +242,9 @@ if (
     function setSelectedDocument(documentId) {
 
         const documentItems =
-            document.querySelectorAll(".document-item");
+            document.querySelectorAll(
+                ".document-item"
+            );
 
 
         documentItems.forEach((item) => {
@@ -263,9 +288,17 @@ if (
             "Loading document information...";
 
 
-        documentViewer.appendChild(label);
-        documentViewer.appendChild(heading);
-        documentViewer.appendChild(message);
+        documentViewer.appendChild(
+            label
+        );
+
+        documentViewer.appendChild(
+            heading
+        );
+
+        documentViewer.appendChild(
+            message
+        );
 
     }
 
@@ -292,8 +325,13 @@ if (
             documentData.name;
 
 
-        documentViewer.appendChild(label);
-        documentViewer.appendChild(heading);
+        documentViewer.appendChild(
+            label
+        );
+
+        documentViewer.appendChild(
+            heading
+        );
 
 
         if (
@@ -453,9 +491,17 @@ if (
             "The demonstration document could not be retrieved. Check the application server and try again.";
 
 
-        documentViewer.appendChild(label);
-        documentViewer.appendChild(heading);
-        documentViewer.appendChild(message);
+        documentViewer.appendChild(
+            label
+        );
+
+        documentViewer.appendChild(
+            heading
+        );
+
+        documentViewer.appendChild(
+            message
+        );
 
     }
 
