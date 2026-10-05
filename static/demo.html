@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaseFlow Demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+
+            <div class="site-title">
+                <a href="/">CaseFlow</a>
+            </div>
+
+            <nav class="main-navigation" aria-label="Main navigation">
+                <a href="/">About the Demo</a>
+                <a href="/static/demo.html" class="active">Demo</a>
+            </nav>
+
+            <div class="environment-label">
+                Demo Environment
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="page-container">
+
+        <div class="demo-notice">
+            <strong>DEMO ENVIRONMENT</strong>
+            <span>
+                This prototype uses synthetic information and does not
+                process real client documents.
+            </span>
+        </div>
+
+
+        <section class="page-introduction">
+
+            <p class="section-label">CASEFLOW DEMONSTRATION</p>
+
+            <h1>Document Review Workflow</h1>
+
+            <p class="introduction-text">
+                This demonstration shows how a document-heavy case workflow
+                could be organized into a structured review process.
+            </p>
+
+        </section>
+
+
+        <section class="case-header">
+
+            <div>
+                <p class="section-label">DEMO CASE</p>
+
+                <h2>MG-2026-001</h2>
+
+                <p class="matter-type">
+                    Adjustment of Status
+                </p>
+            </div>
+
+            <div class="case-meta">
+
+                <div class="meta-item">
+                    <span class="meta-label">Environment</span>
+                    <span class="status status-active">Demo</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">Documents</span>
+                    <span>6 available</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="workflow-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="section-label">WORKFLOW</p>
+                    <h2>Document Review</h2>
+                </div>
+
+            </div>
+
+
+            <div class="workflow-steps">
+
+                <div class="workflow-step active">
+
+                    <span class="workflow-number">1</span>
+
+                    <div>
+                        <strong>Review Documents</strong>
+
+                        <p>
+                            Examine the documents associated with the
+                            demonstration case.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span class="workflow-number">2</span>
+
+                    <div>
+                        <strong>Extract Information</strong>
+
+                        <p>
+                            Identify relevant facts and preserve their
+                            source-document provenance.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span class="workflow-number">3</span>
+
+                    <div>
+                        <strong>Compare Information</strong>
+
+                        <p>
+                            Identify differences and potential issues across
+                            the available documents.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span class="workflow-number">4</span>
+
+                    <div>
+                        <strong>Human Review</strong>
+
+                        <p>
+                            Present findings for staff review rather than
+                            making legal determinations automatically.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="document-workspace">
+
+
+            <div class="document-list-panel">
+
+                <div class="panel-header">
+
+                    <p class="section-label">DOCUMENTS</p>
+
+                    <h2>Case Folder</h2>
+
+                    <p>
+                        6 documents available
+                    </p>
+
+                </div>
+
+
+                <div class="document-list">
+
+                    <button
+                        class="document-item selected"
+                        type="button"
+                    >
+                        <span class="document-number">01</span>
+
+                        <span class="document-information">
+                            <strong>Client Intake Form</strong>
+                            <small>Intake</small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="document-item"
+                        type="button"
+                    >
+                        <span class="document-number">02</span>
+
+                        <span class="document-information">
+                            <strong>Passport</strong>
+                            <small>Identity</small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="document-item"
+                        type="button"
+                    >
+                        <span class="document-number">03</span>
+
+                        <span class="document-information">
+                            <strong>Arrival Record</strong>
+                            <small>Immigration Record</small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="document-item"
+                        type="button"
+                    >
+                        <span class="document-number">04</span>
+
+                        <span class="document-information">
+                            <strong>Marriage Record</strong>
+                            <small>Civil Record</small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="document-item"
+                        type="button"
+                    >
+                        <span class="document-number">05</span>
+
+                        <span class="document-information">
+                            <strong>Tax Summary</strong>
+                            <small>Financial Record</small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="document-item"
+                        type="button"
+                    >
+                        <span class="document-number">06</span>
+
+                        <span class="document-information">
+                            <strong>Residential Lease</strong>
+                            <small>Address Record</small>
+                        </span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="document-viewer-panel">
+
+                <div class="panel-header document-viewer-header">
+
+                    <div>
+                        <p class="section-label">SELECTED DOCUMENT</p>
+
+                        <h2>Client Intake Form</h2>
+                    </div>
+
+                    <span class="status">
+                        Synthetic
+                    </span>
+
+                </div>
+
+
+                <div class="document-viewer-placeholder">
+
+                    <div class="document-placeholder-content">
+
+                        <p class="section-label">
+                            DOCUMENT PREVIEW
+                        </p>
+
+                        <h3>
+                            Client Intake Form
+                        </h3>
+
+                        <p>
+                            The interactive document viewer will be implemented
+                            in the next stage of the demonstration.
+                        </p>
+
+                        <p>
+                            Documents in this POC are represented as synthetic
+                            application data rather than downloadable files.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <section class="analysis-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="section-label">NEXT STEP</p>
+
+                    <h2>Document Analysis</h2>
+                </div>
+
+            </div>
+
+
+            <div class="analysis-placeholder">
+
+                <p>
+                    Once the document workspace is complete, this step will
+                    allow the user to run the demonstration review process.
+                </p>
+
+                <ul>
+                    <li>
+                        Extract relevant information from the documents.
+                    </li>
+
+                    <li>
+                        Associate extracted information with its source.
+                    </li>
+
+                    <li>
+                        Compare information across documents.
+                    </li>
+
+                    <li>
+                        Identify items requiring human review.
+                    </li>
+                </ul>
+
+                <button
+                    class="button-primary"
+                    type="button"
+                    disabled
+                >
+                    Analyze Documents
+                </button>
+
+                <p class="button-note">
+                    This functionality will be enabled in a later stage of
+                    the proof of concept.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="demo-limitations">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="section-label">IMPORTANT</p>
+
+                    <h2>Proof-of-Concept Limitations</h2>
+                </div>
+
+            </div>
+
+
+            <div class="callout">
+
+                <p>
+                    <strong>
+                        This is a software demonstration, not a production
+                        legal application.
+                    </strong>
+                </p>
+
+                <ul>
+
+                    <li>
+                        All information used by this demonstration is
+                        fictional.
+                    </li>
+
+                    <li>
+                        The demonstration does not accept or store real client
+                        documents.
+                    </li>
+
+                    <li>
+                        Documents cannot be uploaded to or downloaded from
+                        this demonstration.
+                    </li>
+
+                    <li>
+                        AI-assisted findings are intended to support human
+                        review, not replace it.
+                    </li>
+
+                    <li>
+                        The system does not provide legal advice or determine
+                        immigration eligibility.
+                    </li>
+
+                    <li>
+                        This prototype does not represent a production-ready
+                        document management, case management, or legal
+                        services system.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+
+            <p>
+                CaseFlow &mdash; Immigration Workflow Automation POC
+            </p>
+
+            <p>
+                Synthetic demonstration data only. Not legal advice.
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>

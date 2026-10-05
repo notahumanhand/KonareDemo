@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>CaseFlow</title>
-
     <link rel="stylesheet" href="/static/style.css">
 </head>
-
 <body>
 
     <header class="site-header">
         <div class="header-inner">
-            <a href="/" class="site-title">CaseFlow</a>
+
+            <div class="site-title">
+                <a href="/">CaseFlow</a>
+            </div>
 
             <nav class="main-navigation" aria-label="Main navigation">
-                <a href="#" class="active">Cases</a>
-                <a href="#">Documents</a>
-                <a href="#">Tasks</a>
-                <a href="#">Activity</a>
+                <a href="/" class="active">About the Demo</a>
+                <a href="/static/demo.html">Demo</a>
             </nav>
 
             <div class="environment-label">
                 Demo Environment
             </div>
+
         </div>
     </header>
 
@@ -32,241 +31,270 @@
     <main class="page-container">
 
         <div class="demo-notice">
-            <strong>DEMO ENVIRONMENT</strong>
-            This application uses synthetic data for demonstration purposes.
-            Not legal advice.
+            <strong>PROOF OF CONCEPT</strong>
+            <span>
+                This is an early demonstration of a potential internal
+                workflow tool. It is not a production application.
+            </span>
         </div>
 
 
         <section class="page-introduction">
-            <p class="eyebrow">CASE MANAGEMENT</p>
 
-            <h1>Case Overview</h1>
+            <p class="section-label">CASEFLOW</p>
+
+            <h1>
+                Immigration Workflow Automation Demonstration
+            </h1>
 
             <p class="introduction-text">
-                Review case information, document status, workflow tasks,
-                and activity for the current matter.
+                CaseFlow is a proof-of-concept demonstrating how document-heavy
+                case workflows could be organized into a structured process
+                for review.
             </p>
-        </section>
 
+            <p>
+                The demonstration focuses on identifying information across
+                multiple documents, comparing that information, and directing
+                potential discrepancies to a human reviewer.
+            </p>
 
-        <section class="case-header">
-
-            <div>
-                <p class="section-label">CLIENT</p>
-                <h2>Maria Rodriguez</h2>
-                <p class="matter-type">Adjustment of Status</p>
-            </div>
-
-            <div class="case-meta">
-
-                <div class="meta-item">
-                    <span class="meta-label">STATUS</span>
-                    <span class="status status-active">Active</span>
-                </div>
-
-                <div class="meta-item">
-                    <span class="meta-label">TARGET DATE</span>
-                    <span>October 28, 2026</span>
-                </div>
-
-                <div class="meta-item">
-                    <span class="meta-label">ASSIGNED TO</span>
-                    <span>J. Smith</span>
-                </div>
-
-            </div>
+            <a href="/static/demo.html" class="button-primary">
+                Start the Demonstration
+            </a>
 
         </section>
 
 
-        <div class="content-grid">
+        <section class="information-section">
 
-            <section class="content-section documents-section">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">HOW IT WORKS</p>
+                    <h2>Demonstration Workflow</h2>
+                </div>
+            </div>
 
-                <div class="section-heading">
+            <div class="workflow-overview">
+
+                <div class="workflow-overview-item">
+                    <span class="workflow-number">1</span>
+
                     <div>
-                        <p class="section-label">CASE WORKFLOW</p>
-                        <h2>Documents</h2>
+                        <h3>Review Documents</h3>
+                        <p>
+                            Examine a set of fictional documents associated
+                            with a demonstration case.
+                        </p>
                     </div>
-
-                    <span class="section-count">5 documents</span>
                 </div>
 
-                <div class="document-list">
+                <div class="workflow-overview-item">
+                    <span class="workflow-number">2</span>
 
-                    <div class="document-row">
-                        <div>
-                            <strong>Passport</strong>
-                            <span>Identity document</span>
-                        </div>
-
-                        <span class="status status-received">Received</span>
-                    </div>
-
-                    <div class="document-row">
-                        <div>
-                            <strong>Birth Certificate</strong>
-                            <span>Civil document</span>
-                        </div>
-
-                        <span class="status status-received">Received</span>
-                    </div>
-
-                    <div class="document-row">
-                        <div>
-                            <strong>Marriage Certificate</strong>
-                            <span>Civil document</span>
-                        </div>
-
-                        <span class="status status-received">Received</span>
-                    </div>
-
-                    <div class="document-row document-missing">
-                        <div>
-                            <strong>I-94</strong>
-                            <span>Immigration record</span>
-                        </div>
-
-                        <span class="status status-missing">Missing</span>
-                    </div>
-
-                    <div class="document-row document-missing">
-                        <div>
-                            <strong>Prior Immigration Records</strong>
-                            <span>Case history</span>
-                        </div>
-
-                        <span class="status status-missing">Missing</span>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <section class="content-section analysis-section">
-
-                <div class="section-heading">
                     <div>
-                        <p class="section-label">AUTOMATION</p>
-                        <h2>Case Analysis</h2>
+                        <h3>Extract Information</h3>
+                        <p>
+                            Identify relevant information from the documents
+                            and keep track of where each piece of information
+                            came from.
+                        </p>
                     </div>
                 </div>
 
-                <div class="analysis-placeholder">
+                <div class="workflow-overview-item">
+                    <span class="workflow-number">3</span>
 
-                    <p class="placeholder-label">AI-ASSISTED ANALYSIS</p>
+                    <div>
+                        <h3>Compare Information</h3>
+                        <p>
+                            Compare information appearing in different
+                            documents and identify potential discrepancies or
+                            variations.
+                        </p>
+                    </div>
+                </div>
 
+                <div class="workflow-overview-item">
+                    <span class="workflow-number">4</span>
+
+                    <div>
+                        <h3>Review Findings</h3>
+                        <p>
+                            Present potential issues to a human reviewer rather
+                            than automatically making legal decisions.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="information-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">WHAT THIS DEMONSTRATES</p>
+                    <h2>Technical Concepts</h2>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-item">
+                    <h3>Workflow Automation</h3>
                     <p>
-                        Automated case analysis will appear here in a
-                        future iteration of CaseFlow.
+                        Turning a sequence of repetitive document-review
+                        activities into a structured workflow.
                     </p>
+                </div>
 
-                    <p class="review-note">
-                        AI-generated information will require human review.
+                <div class="feature-item">
+                    <h3>Structured Information</h3>
+                    <p>
+                        Representing information in a form that can be
+                        compared, validated, and used by other parts of an
+                        application.
                     </p>
-
                 </div>
 
-            </section>
-
-
-            <section class="content-section tasks-section">
-
-                <div class="section-heading">
-                    <div>
-                        <p class="section-label">WORKFLOW</p>
-                        <h2>Tasks &amp; Deadlines</h2>
-                    </div>
-
-                    <span class="section-count">3 tasks</span>
+                <div class="feature-item">
+                    <h3>AI-Assisted Review</h3>
+                    <p>
+                        Using AI as one component of a larger workflow while
+                        keeping a human reviewer responsible for decisions.
+                    </p>
                 </div>
 
-                <div class="task-list">
-
-                    <div class="task-row">
-                        <div class="task-indicator"></div>
-
-                        <div class="task-content">
-                            <strong>Request missing I-94</strong>
-                            <span>Document request</span>
-                        </div>
-
-                        <span class="task-status">Open</span>
-                    </div>
-
-                    <div class="task-row">
-                        <div class="task-indicator"></div>
-
-                        <div class="task-content">
-                            <strong>Request prior immigration records</strong>
-                            <span>Document request</span>
-                        </div>
-
-                        <span class="task-status">Open</span>
-                    </div>
-
-                    <div class="task-row">
-                        <div class="task-indicator"></div>
-
-                        <div class="task-content">
-                            <strong>Verify biographical information</strong>
-                            <span>Case review</span>
-                        </div>
-
-                        <span class="task-status">Open</span>
-                    </div>
-
+                <div class="feature-item">
+                    <h3>Source Tracking</h3>
+                    <p>
+                        Keeping track of which document provided information
+                        so that findings can be reviewed against their source.
+                    </p>
                 </div>
 
-            </section>
+            </div>
+
+        </section>
 
 
-            <section class="content-section activity-section">
+        <section class="information-section">
 
-                <div class="section-heading">
-                    <div>
-                        <p class="section-label">HISTORY</p>
-                        <h2>Activity</h2>
-                    </div>
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">LIMITATIONS</p>
+                    <h2>What This POC Does Not Do</h2>
                 </div>
+            </div>
 
-                <div class="activity-list">
+            <div class="callout">
 
-                    <div class="activity-row">
-                        <time>Today · 09:42 AM</time>
-                        <p>Case reviewed</p>
-                    </div>
+                <p>
+                    <strong>
+                        This site is a proof of concept, not a finished
+                        application.
+                    </strong>
+                </p>
 
-                    <div class="activity-row">
-                        <time>Today · 09:31 AM</time>
-                        <p>Marriage Certificate marked received</p>
-                    </div>
+                <p>
+                    The demonstration is intentionally limited so that the
+                    underlying workflow can be shown without introducing the
+                    infrastructure and security requirements of a production
+                    legal application.
+                </p>
 
-                    <div class="activity-row">
-                        <time>Yesterday · 04:15 PM</time>
-                        <p>Case created</p>
-                    </div>
+                <ul>
+                    <li>
+                        The demonstration uses fictional information only.
+                    </li>
+                    <li>
+                        It does not accept real client documents.
+                    </li>
+                    <li>
+                        Users cannot upload documents to the site.
+                    </li>
+                    <li>
+                        Users cannot download documents from the site.
+                    </li>
+                    <li>
+                        The demonstration does not maintain real client
+                        records or case files.
+                    </li>
+                    <li>
+                        AI-assisted analysis is intended to support human
+                        review.
+                    </li>
+                    <li>
+                        The system does not provide legal advice.
+                    </li>
+                    <li>
+                        The system does not determine immigration eligibility.
+                    </li>
+                </ul>
 
-                    <div class="activity-row">
-                        <time>Yesterday · 04:15 PM</time>
-                        <p>Initial document checklist generated</p>
-                    </div>
+            </div>
 
+        </section>
+
+
+        <section class="information-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">DEMO DATA</p>
+                    <h2>About the Demonstration Case</h2>
                 </div>
+            </div>
 
-            </section>
+            <p>
+                The demonstration uses a fictional case and fictional
+                supporting records. The records are designed to contain
+                information that can be compared across documents, including
+                dates, names, addresses, and other case information.
+            </p>
 
-        </div>
+            <p>
+                The purpose is to demonstrate how a system could identify
+                information that deserves human attention. It is not intended
+                to reproduce official government documents or make conclusions
+                about an actual person's immigration case.
+            </p>
+
+        </section>
+
+
+        <section class="demo-start">
+
+            <h2>Ready to see the workflow?</h2>
+
+            <p>
+                Open the interactive demonstration to explore the fictional
+                case and its documents.
+            </p>
+
+            <a href="/static/demo.html" class="button-primary">
+                Open CaseFlow Demo
+            </a>
+
+        </section>
 
     </main>
 
 
     <footer class="site-footer">
         <div class="footer-inner">
-            <span>CaseFlow</span>
-            <span>Internal workflow demonstration</span>
+
+            <p>
+                CaseFlow &mdash; Immigration Workflow Automation POC
+            </p>
+
+            <p>
+                Synthetic demonstration data only. Not legal advice.
+            </p>
+
         </div>
     </footer>
 
